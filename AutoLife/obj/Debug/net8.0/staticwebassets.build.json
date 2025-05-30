@@ -1,0 +1,846 @@
+{
+  "Version": 1,
+  "Hash": "ae9yYKDrY0uUjY33s90yRFgqvuTKKh3AZUbIfCuw9/Q=",
+  "Source": "AutoLife",
+  "BasePath": "_content/AutoLife",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "AutoLife\\wwwroot",
+      "Source": "AutoLife",
+      "ContentRoot": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\",
+      "BasePath": "_content/AutoLife",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Repos\\AutoLife\\AutoLife\\obj\\Debug\\net8.0\\scopedcss\\bundle\\AutoLife.styles.css",
+      "SourceId": "AutoLife",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Repos\\AutoLife\\AutoLife\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "BasePath": "_content/AutoLife",
+      "RelativePath": "AutoLife#[.{fingerprint}]?.styles.css",
+      "AssetKind": "All",
+      "AssetMode": "CurrentProject",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ApplicationBundle",
+      "Fingerprint": "dhvylvf3tr",
+      "Integrity": "4ZQCEjOJSV4JJzhQC76f1taiu7dQbyBClNETrwh8tlY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Repos\\AutoLife\\AutoLife\\obj\\Debug\\net8.0\\scopedcss\\bundle\\AutoLife.styles.css"
+    },
+    {
+      "Identity": "C:\\Repos\\AutoLife\\AutoLife\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\AutoLife.bundle.scp.css",
+      "SourceId": "AutoLife",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Repos\\AutoLife\\AutoLife\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "BasePath": "_content/AutoLife",
+      "RelativePath": "AutoLife#[.{fingerprint}]!.bundle.scp.css",
+      "AssetKind": "All",
+      "AssetMode": "Reference",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ProjectBundle",
+      "Fingerprint": "dhvylvf3tr",
+      "Integrity": "4ZQCEjOJSV4JJzhQC76f1taiu7dQbyBClNETrwh8tlY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Repos\\AutoLife\\AutoLife\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\AutoLife.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\app.css",
+      "SourceId": "AutoLife",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\",
+      "BasePath": "_content/AutoLife",
+      "RelativePath": "app#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ged3c9p6ot",
+      "Integrity": "mMaPYpWhIDF10kVZ/AztpakUAq9WbUzZx2LOZ4pi18c=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\app.css"
+    },
+    {
+      "Identity": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "SourceId": "AutoLife",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\",
+      "BasePath": "_content/AutoLife",
+      "RelativePath": "bootstrap/bootstrap.min#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6gzpyzhau4",
+      "Integrity": "SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Identity": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "SourceId": "AutoLife",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\",
+      "BasePath": "_content/AutoLife",
+      "RelativePath": "bootstrap/bootstrap.min.css#[.{fingerprint}]?.map",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "8inm30yfxf",
+      "Integrity": "gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Identity": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\font\\Montserrat.ttf",
+      "SourceId": "AutoLife",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\",
+      "BasePath": "_content/AutoLife",
+      "RelativePath": "font/Montserrat#[.{fingerprint}]?.ttf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "x1juw6fwdo",
+      "Integrity": "9aPwLEpy8doRxtrfT9eMB7LxRaNO1G64de0Nooy9NIw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\font\\Montserrat.ttf"
+    },
+    {
+      "Identity": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\font\\ReplicaLLWeb-Bold.woff",
+      "SourceId": "AutoLife",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\",
+      "BasePath": "_content/AutoLife",
+      "RelativePath": "font/ReplicaLLWeb-Bold#[.{fingerprint}]?.woff",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "iw6awb5wmu",
+      "Integrity": "jkLeYtRZrtu3biW5XL8O+ZLNishI8/867p9o4E8XAyE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\font\\ReplicaLLWeb-Bold.woff"
+    },
+    {
+      "Identity": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\font\\ReplicaLLWeb-Light.woff",
+      "SourceId": "AutoLife",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\",
+      "BasePath": "_content/AutoLife",
+      "RelativePath": "font/ReplicaLLWeb-Light#[.{fingerprint}]?.woff",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "cfroubxua0",
+      "Integrity": "KOUxoRayeQ+z4MZX9TNPCO2SQhPCLm37c4xUo/cgfLQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\font\\ReplicaLLWeb-Light.woff"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "app.css",
+      "AssetFile": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\app.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2430"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mMaPYpWhIDF10kVZ/AztpakUAq9WbUzZx2LOZ4pi18c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 27 May 2025 12:30:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-mMaPYpWhIDF10kVZ/AztpakUAq9WbUzZx2LOZ4pi18c="
+        }
+      ]
+    },
+    {
+      "Route": "app.ged3c9p6ot.css",
+      "AssetFile": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\app.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2430"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mMaPYpWhIDF10kVZ/AztpakUAq9WbUzZx2LOZ4pi18c=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 27 May 2025 12:30:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ged3c9p6ot"
+        },
+        {
+          "Name": "label",
+          "Value": "app.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-mMaPYpWhIDF10kVZ/AztpakUAq9WbUzZx2LOZ4pi18c="
+        }
+      ]
+    },
+    {
+      "Route": "AutoLife.bundle.scp.css",
+      "AssetFile": "C:\\Repos\\AutoLife\\AutoLife\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\AutoLife.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "499"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4ZQCEjOJSV4JJzhQC76f1taiu7dQbyBClNETrwh8tlY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 27 May 2025 08:34:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4ZQCEjOJSV4JJzhQC76f1taiu7dQbyBClNETrwh8tlY="
+        }
+      ]
+    },
+    {
+      "Route": "AutoLife.dhvylvf3tr.bundle.scp.css",
+      "AssetFile": "C:\\Repos\\AutoLife\\AutoLife\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\AutoLife.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "499"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4ZQCEjOJSV4JJzhQC76f1taiu7dQbyBClNETrwh8tlY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 27 May 2025 08:34:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dhvylvf3tr"
+        },
+        {
+          "Name": "label",
+          "Value": "AutoLife.bundle.scp.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4ZQCEjOJSV4JJzhQC76f1taiu7dQbyBClNETrwh8tlY="
+        }
+      ]
+    },
+    {
+      "Route": "AutoLife.dhvylvf3tr.styles.css",
+      "AssetFile": "C:\\Repos\\AutoLife\\AutoLife\\obj\\Debug\\net8.0\\scopedcss\\bundle\\AutoLife.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "499"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4ZQCEjOJSV4JJzhQC76f1taiu7dQbyBClNETrwh8tlY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 27 May 2025 08:34:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "dhvylvf3tr"
+        },
+        {
+          "Name": "label",
+          "Value": "AutoLife.styles.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4ZQCEjOJSV4JJzhQC76f1taiu7dQbyBClNETrwh8tlY="
+        }
+      ]
+    },
+    {
+      "Route": "AutoLife.styles.css",
+      "AssetFile": "C:\\Repos\\AutoLife\\AutoLife\\obj\\Debug\\net8.0\\scopedcss\\bundle\\AutoLife.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "499"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4ZQCEjOJSV4JJzhQC76f1taiu7dQbyBClNETrwh8tlY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 27 May 2025 08:34:46 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4ZQCEjOJSV4JJzhQC76f1taiu7dQbyBClNETrwh8tlY="
+        }
+      ]
+    },
+    {
+      "Route": "bootstrap/bootstrap.min.6gzpyzhau4.css",
+      "AssetFile": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "162726"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 19 Mar 2025 08:50:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6gzpyzhau4"
+        },
+        {
+          "Name": "label",
+          "Value": "bootstrap/bootstrap.min.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0="
+        }
+      ]
+    },
+    {
+      "Route": "bootstrap/bootstrap.min.css",
+      "AssetFile": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "162726"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 19 Mar 2025 08:50:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SiIVMGgRhdXjKSTIddX7mh9IbOXVcwQWc7/p4nS6D/0="
+        }
+      ]
+    },
+    {
+      "Route": "bootstrap/bootstrap.min.css.8inm30yfxf.map",
+      "AssetFile": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "449111"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 19 Mar 2025 08:50:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8inm30yfxf"
+        },
+        {
+          "Name": "label",
+          "Value": "bootstrap/bootstrap.min.css.map"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ="
+        }
+      ]
+    },
+    {
+      "Route": "bootstrap/bootstrap.min.css.map",
+      "AssetFile": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "449111"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/plain"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 19 Mar 2025 08:50:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-gBwg2tmA0Ci2u54gMF1jNCVku6vznarkLS6D76htNNQ="
+        }
+      ]
+    },
+    {
+      "Route": "font/Montserrat.ttf",
+      "AssetFile": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\font\\Montserrat.ttf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "330948"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/x-font-ttf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9aPwLEpy8doRxtrfT9eMB7LxRaNO1G64de0Nooy9NIw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 27 May 2025 08:32:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-9aPwLEpy8doRxtrfT9eMB7LxRaNO1G64de0Nooy9NIw="
+        }
+      ]
+    },
+    {
+      "Route": "font/Montserrat.x1juw6fwdo.ttf",
+      "AssetFile": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\font\\Montserrat.ttf",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "330948"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/x-font-ttf"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9aPwLEpy8doRxtrfT9eMB7LxRaNO1G64de0Nooy9NIw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 27 May 2025 08:32:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "x1juw6fwdo"
+        },
+        {
+          "Name": "label",
+          "Value": "font/Montserrat.ttf"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-9aPwLEpy8doRxtrfT9eMB7LxRaNO1G64de0Nooy9NIw="
+        }
+      ]
+    },
+    {
+      "Route": "font/ReplicaLLWeb-Bold.iw6awb5wmu.woff",
+      "AssetFile": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\font\\ReplicaLLWeb-Bold.woff",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "94699"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/font-woff"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jkLeYtRZrtu3biW5XL8O+ZLNishI8/867p9o4E8XAyE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 19 Mar 2025 08:50:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "iw6awb5wmu"
+        },
+        {
+          "Name": "label",
+          "Value": "font/ReplicaLLWeb-Bold.woff"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-jkLeYtRZrtu3biW5XL8O+ZLNishI8/867p9o4E8XAyE="
+        }
+      ]
+    },
+    {
+      "Route": "font/ReplicaLLWeb-Bold.woff",
+      "AssetFile": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\font\\ReplicaLLWeb-Bold.woff",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "94699"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/font-woff"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jkLeYtRZrtu3biW5XL8O+ZLNishI8/867p9o4E8XAyE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 19 Mar 2025 08:50:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-jkLeYtRZrtu3biW5XL8O+ZLNishI8/867p9o4E8XAyE="
+        }
+      ]
+    },
+    {
+      "Route": "font/ReplicaLLWeb-Light.cfroubxua0.woff",
+      "AssetFile": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\font\\ReplicaLLWeb-Light.woff",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "94759"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/font-woff"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KOUxoRayeQ+z4MZX9TNPCO2SQhPCLm37c4xUo/cgfLQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 19 Mar 2025 08:50:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "cfroubxua0"
+        },
+        {
+          "Name": "label",
+          "Value": "font/ReplicaLLWeb-Light.woff"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-KOUxoRayeQ+z4MZX9TNPCO2SQhPCLm37c4xUo/cgfLQ="
+        }
+      ]
+    },
+    {
+      "Route": "font/ReplicaLLWeb-Light.woff",
+      "AssetFile": "C:\\Repos\\AutoLife\\AutoLife\\wwwroot\\font\\ReplicaLLWeb-Light.woff",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "94759"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/font-woff"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"KOUxoRayeQ+z4MZX9TNPCO2SQhPCLm37c4xUo/cgfLQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 19 Mar 2025 08:50:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-KOUxoRayeQ+z4MZX9TNPCO2SQhPCLm37c4xUo/cgfLQ="
+        }
+      ]
+    }
+  ]
+}

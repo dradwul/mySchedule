@@ -1,0 +1,74 @@
+﻿@using AutoLife.Components.Modules
+@using AutoLife.Data.Repositories
+@using AutoLife.Domain.Models
+@using AutoLife.Lib.Services
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="AutoLife.styles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <HeadOutlet @rendermode="InteractiveServer" />
+</head>
+
+<body class="d-flex justify-content-center w-100 overflow-hidden bg-dark">
+    <div class="d-flex flex-column align-items-center w-100">
+        <nav class="navbar w-100 d-flex justify-content-between align-items-center flex-wrap">
+            <div class="d-flex gap-2 mx-2 w-25 justify-content-start overflow-auto">
+                @foreach (var profile in UserStateService.UserProfiles)
+                {
+                    <UserAvatar Name="@profile.Name" />
+                }
+            </div>
+
+            <a class="navbar-brand mx-2 w-25 d-flex justify-content-center bg-transparent" href="#">
+                @* <img src="/images/AutoLifeLogo.png" width="60" height="60" alt=""> *@
+                <h1 class="text-white-50">mySchedule</h1>
+            </a>
+
+            <div class="mx-2 w-25 d-flex flex-column align-items-end">
+                <button class="btn btn-secondary">
+                    <i class="bi bi-gear" />
+                </button>
+            </div>
+        </nav>
+
+        <main class="flex-grow-1 overflow-auto">
+            <Routes @rendermode="InteractiveServer" />
+        </main>
+
+        <footer class="fixed-bottom bg-dark">
+            <nav class="d-flex w-100 justify-content-around align-items-center p-2">
+                <button class="nav-item btn btn-dark h-100">
+                    <i class="bi bi-calendar2-check display-5"></i>
+                </button>
+                <button class="nav-item btn btn-dark h-100">
+                    <i class="bi bi-plus-square-fill display-5"></i>
+                </button>
+                <button class="nav-item btn btn-dark h-100">
+                    <i class="bi bi-cash-coin display-5"></i>
+                </button>
+            </nav>
+        </footer>
+    </div>
+    <script src="_framework/blazor.web.js"></script>
+</body>
+
+</html>
+
+@code {
+    [Inject] private UserStateService UserStateService { get; set; } = default!;
+    [Inject] private DummyRepository DummyRepository { get; set; } = default!;
+
+    protected override void OnInitialized()
+    {
+        var users = DummyRepository.GetAllUserProfiles();
+        UserStateService.LoadUsers(users);
+    }
+    
+}

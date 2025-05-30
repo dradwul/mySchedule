@@ -1,0 +1,20 @@
+<button class="btn btn-outline-secondary d-flex justify-content-center align-items-center p-3">
+    <b class="bg-transparent">@GetInitials()</b>
+</button>
+
+@code {
+    [Parameter]
+    public string? Name { get; set; }
+    private string GetInitials()
+    {
+        if (string.IsNullOrEmpty(Name))
+            return "??";
+        var names = Name.Split(' ');
+        if (names.Length == 0)
+            return "??";
+        var firstInitial = names[0].Substring(0, 1).ToUpper();
+        var lastInitial = names.Length > 1 ? names[names.Length - 1].Substring(0, 1).ToUpper() : string.Empty;
+        //return $"{firstInitial}{lastInitial}";
+        return $"{firstInitial}";
+    }
+}
