@@ -1,0 +1,11 @@
+C:\Repos\AutoLife\AutoLife.Domain\bin\Debug\net8.0\AutoLife.Domain.deps.json
+C:\Repos\AutoLife\AutoLife.Domain\bin\Debug\net8.0\AutoLife.Domain.dll
+C:\Repos\AutoLife\AutoLife.Domain\bin\Debug\net8.0\AutoLife.Domain.pdb
+C:\Repos\AutoLife\AutoLife.Domain\obj\Debug\net8.0\AutoLife.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repos\AutoLife\AutoLife.Domain\obj\Debug\net8.0\AutoLife.Domain.AssemblyInfoInputs.cache
+C:\Repos\AutoLife\AutoLife.Domain\obj\Debug\net8.0\AutoLife.Domain.AssemblyInfo.cs
+C:\Repos\AutoLife\AutoLife.Domain\obj\Debug\net8.0\AutoLife.Domain.csproj.CoreCompileInputs.cache
+C:\Repos\AutoLife\AutoLife.Domain\obj\Debug\net8.0\AutoLife.Domain.dll
+C:\Repos\AutoLife\AutoLife.Domain\obj\Debug\net8.0\refint\AutoLife.Domain.dll
+C:\Repos\AutoLife\AutoLife.Domain\obj\Debug\net8.0\AutoLife.Domain.pdb
+C:\Repos\AutoLife\AutoLife.Domain\obj\Debug\net8.0\ref\AutoLife.Domain.dll

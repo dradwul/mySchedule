@@ -1,0 +1,15 @@
+C:\Repos\AutoLife\AutoLife.Lib\bin\Debug\net8.0\AutoLife.Lib.deps.json
+C:\Repos\AutoLife\AutoLife.Lib\bin\Debug\net8.0\AutoLife.Lib.dll
+C:\Repos\AutoLife\AutoLife.Lib\bin\Debug\net8.0\AutoLife.Lib.pdb
+C:\Repos\AutoLife\AutoLife.Lib\bin\Debug\net8.0\AutoLife.Domain.dll
+C:\Repos\AutoLife\AutoLife.Lib\bin\Debug\net8.0\AutoLife.Domain.pdb
+C:\Repos\AutoLife\AutoLife.Lib\obj\Debug\net8.0\AutoLife.Lib.csproj.AssemblyReference.cache
+C:\Repos\AutoLife\AutoLife.Lib\obj\Debug\net8.0\AutoLife.Lib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Repos\AutoLife\AutoLife.Lib\obj\Debug\net8.0\AutoLife.Lib.AssemblyInfoInputs.cache
+C:\Repos\AutoLife\AutoLife.Lib\obj\Debug\net8.0\AutoLife.Lib.AssemblyInfo.cs
+C:\Repos\AutoLife\AutoLife.Lib\obj\Debug\net8.0\AutoLife.Lib.csproj.CoreCompileInputs.cache
+C:\Repos\AutoLife\AutoLife.Lib\obj\Debug\net8.0\AutoLife.1CF14854.Up2Date
+C:\Repos\AutoLife\AutoLife.Lib\obj\Debug\net8.0\AutoLife.Lib.dll
+C:\Repos\AutoLife\AutoLife.Lib\obj\Debug\net8.0\refint\AutoLife.Lib.dll
+C:\Repos\AutoLife\AutoLife.Lib\obj\Debug\net8.0\AutoLife.Lib.pdb
+C:\Repos\AutoLife\AutoLife.Lib\obj\Debug\net8.0\ref\AutoLife.Lib.dll
