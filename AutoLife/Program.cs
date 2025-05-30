@@ -14,8 +14,9 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddSingleton<UserStateService>();
 builder.Services.AddScoped<IRepository<UserProfile>, UserProfileRepository>();
+builder.Services.AddScoped<IRepository<ToDoItem>, ToDoItemRepository>();
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
+builder.Services.AddDbContextFactory<ApplicationDbContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();

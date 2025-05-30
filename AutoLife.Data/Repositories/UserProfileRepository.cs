@@ -6,54 +6,60 @@ namespace AutoLife.Data.Repositories;
 
 public class UserProfileRepository : IRepository<UserProfile>
 {
-	private readonly ApplicationDbContext _context;
+	private readonly IDbContextFactory<ApplicationDbContext> _context;
 
-	public UserProfileRepository(ApplicationDbContext context)
+	public UserProfileRepository(IDbContextFactory<ApplicationDbContext> context)
 	{
 		_context = context;
 	}
 
 	public async Task<bool> Create(UserProfile userProfile)
 	{
+		var context = _context.CreateDbContext();
 		if (userProfile == null)
 		{
 			return false;
 		}
 
-		_context.UserProfiles.Add(userProfile);
-		await _context.SaveChangesAsync();
+		context.UserProfiles.Add(userProfile);
+		await context.SaveChangesAsync();
 
 		return true;
 	}
 
 	public async Task<bool> Remove(UserProfile userProfile)
 	{
+		var context = _context.CreateDbContext();
 		if (userProfile == null)
 		{
 			return false;
 		}
 
-		_context.UserProfiles.Remove(userProfile);
-		await _context.SaveChangesAsync();
+		context.UserProfiles.Remove(userProfile);
+		await context.SaveChangesAsync();
 
 		return true;
 	}
 
 	public async Task<bool> Update(UserProfile userProfile)
 	{
+		var context = _context.CreateDbContext();
 		if (userProfile == null)
 		{
 			return false;
 		}
 
-		_context.UserProfiles.Update(userProfile);
-		await _context.SaveChangesAsync();
+		context.UserProfiles.Update(userProfile);
+		await context.SaveChangesAsync();
 
 		return true;
 	}
 
 	public async Task<List<UserProfile>> GetAll()
 	{
-		return await _context.UserProfiles.ToListAsync();
+		var context = _context.CreateDbContext();
+		return await context.UserProfiles
+			.Include(x => x.ToDoList)
+			.ToListAsync();
 	}
 }

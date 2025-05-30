@@ -4,6 +4,7 @@ using AutoLife.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoLife.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250530175629_TodoChange")]
+    partial class TodoChange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,7 +33,7 @@ namespace AutoLife.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<Guid>("AssignedPersonId")
+                    b.Property<Guid?>("AssignedPersonId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Category")
@@ -85,9 +88,7 @@ namespace AutoLife.Data.Migrations
                 {
                     b.HasOne("AutoLife.Domain.Models.UserProfile", "AssignedPerson")
                         .WithMany("ToDoList")
-                        .HasForeignKey("AssignedPersonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AssignedPersonId");
 
                     b.Navigation("AssignedPerson");
                 });

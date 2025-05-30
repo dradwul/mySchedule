@@ -1,6 +1,16 @@
-<button class="btn btn-outline-secondary d-flex justify-content-center align-items-center p-3">
+<button class="avatar-button btn btn-outline-secondary d-flex justify-content-center align-items-center">
     <b class="bg-transparent">@GetInitials()</b>
 </button>
+
+<style>
+.avatar-button:hover b {
+    display:none;
+}
+.avatar-button:hover::after {
+    content:"@Name";
+    font-weight:bold;
+}
+</style>
 
 @code {
     [Parameter]

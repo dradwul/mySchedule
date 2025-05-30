@@ -7,12 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\images\AutoLifeLogo.png" />
-    <Content Remove="wwwroot\images\BottomMenuButton_Budget.png" />
-    <Content Remove="wwwroot\images\BottomMenuButton_Planner.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.5">
       <PrivateAssets>all</PrivateAssets>
@@ -29,12 +23,6 @@
     <ProjectReference Include="..\AutoLife.Data\AutoLife.Data.csproj" />
     <ProjectReference Include="..\AutoLife.Domain\AutoLife.Domain.csproj" />
     <ProjectReference Include="..\AutoLife.Lib\AutoLife.Lib.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="wwwroot\images\AutoLifeLogo.png" />
-    <Resource Include="wwwroot\images\BottomMenuButton_Budget.png" />
-    <Resource Include="wwwroot\images\BottomMenuButton_Planner.png" />
   </ItemGroup>
 
 </Project>
