@@ -1,6 +1,0 @@
-wwwroot\app.css
-wwwroot\bootstrap\bootstrap.min.css
-wwwroot\bootstrap\bootstrap.min.css.map
-wwwroot\font\Montserrat.ttf
-wwwroot\font\ReplicaLLWeb-Bold.woff
-wwwroot\font\ReplicaLLWeb-Light.woff
