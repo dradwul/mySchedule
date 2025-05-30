@@ -1,6 +1,10 @@
 using AutoLife.Components;
+using AutoLife.Data;
 using AutoLife.Data.Repositories;
+using AutoLife.Domain.Models;
+using AutoLife.Lib.Interfaces;
 using AutoLife.Lib.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,10 +13,12 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddSingleton<UserStateService>();
-builder.Services.AddSingleton<DummyRepository>();
+builder.Services.AddScoped<IRepository<UserProfile>, UserProfileRepository>();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+	options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
-
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

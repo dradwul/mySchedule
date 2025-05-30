@@ -10,8 +10,4 @@
     <ProjectReference Include="..\AutoLife.Domain\AutoLife.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
-
 </Project>

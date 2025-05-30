@@ -1,6 +1,7 @@
 ﻿@page "/"
 @using AutoLife.Data.Repositories
 @using AutoLife.Domain.Models
+@using AutoLife.Lib.Interfaces
 @using AutoLife.Lib.Services
 @using System.Globalization
 @rendermode InteractiveServer
@@ -27,15 +28,15 @@
             </header>
 
             <div class="d-flex align-items-center h-100 w-100 justify-content-between">
-                <button class="btn d-flex justify-content-center text-white-50 hover-scale"
-                        style="width:50px; min-width:50px;"
-                        @onclick="() => ChangeDay(-1)"
-                        aria-label="Föregående dag"
-                        title="Föregående dag">
+                <button class="btn d-flex justify-content-center text-white-50"
+                style="width:50px; min-width:50px;"
+                @onclick="() => ChangeDay(-1)"
+                aria-label="Föregående dag"
+                title="Föregående dag">
                     <i class="bi bi-chevron-left" />
                 </button>
 
-                <div class="d-flex flex-grow-1 gap-2 px-2 h-50">
+                <div class="d-flex flex-grow-1 gap-2 px-2">
                     @for (int i = 0; i < UserStateService.UserProfiles.Count; i++)
                     {
                         var profile = UserStateService.UserProfiles[i];
@@ -43,12 +44,12 @@
                         var completedCount = todosForDay.Count(t => t.IsCompleted);
                         var totalCount = todosForDay.Count;
 
-                        <div class="h-100 card profile-card @(profile.Selected ? "border-primary flex-grow-1 selected" : "opacity-75")"
-                             @onclick="@(() => SelectProfile(profile))"
-                             style="cursor:pointer; transition: all 0.3s ease;"
-                             role="button"
-                             tabindex="0"
-                             @onkeypress="@((e) => { if (e.Key == "Enter" || e.Key == " ") SelectProfile(profile); })">
+                        <div class="card @(profile.Selected ? "border-primary flex-grow-1 selected" : "opacity-75")"
+                        @onclick="@(() => SelectProfile(profile))"
+                        style="cursor:pointer; transition: all 0.3s ease;"
+                        role="button"
+                        tabindex="0"
+                        @onkeypress="@((e) => { if (e.Key == "Enter" || e.Key == " ") SelectProfile(profile); })">
 
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <span class="profile-name">
@@ -58,7 +59,7 @@
                                     }
                                     else
                                     {
-                                        @profile.Name[0]
+                                        @profile?.Name?[0]
                                     }
                                 </span>
 
@@ -83,11 +84,11 @@
                                             <div class="input-group gap-2 mb-2">
                                                 <div class="form-check d-flex align-items-center">
                                                     <InputCheckbox id="@inputId"
-                                                                   @bind-Value="todo.IsCompleted"
-                                                                   class="form-check-input"
-                                                                   @onchange="@(() => OnTodoToggled())" />
+                                                    @bind-Value="todo.IsCompleted"
+                                                    class="form-check-input"
+                                                    @onchange="@(() => OnTodoToggled())" />
                                                     <label class="form-check-label ms-2 @(todo.IsCompleted ? "text-decoration-line-through text-muted" : "")"
-                                                           for="@inputId">
+                                                    for="@inputId">
                                                         @todo.Title
                                                     </label>
                                                 </div>
@@ -115,7 +116,7 @@
                                             <button class="btn btn-success mt-2" @onclick="AddNewTodo">Lägg till</button>
                                         </div>
                                     }
-                                    
+
                                 </div>
                             }
                         </div>
@@ -123,10 +124,10 @@
                 </div>
 
                 <button class="btn d-flex justify-content-center text-white-50 hover-scale"
-                        style="width:50px; min-width:50px;"
-                        @onclick="() => ChangeDay(1)"
-                        aria-label="Nästa dag"
-                        title="Nästa dag">
+                style="width:50px; min-width:50px;"
+                @onclick="() => ChangeDay(1)"
+                aria-label="Nästa dag"
+                title="Nästa dag">
                     <i class="bi bi-chevron-right" />
                 </button>
             </div>
@@ -143,11 +144,11 @@
                 var dayItems = _weeklyPlan.Items.Where(item => item.Date.Date == date.Date).OrderBy(item => item.Date).ToList();
 
                 <div class="card day-card @(isSelected ? "flex-grow-1 selected" : "opacity-50") @(isToday ? "border-warning" : "")"
-                     style="cursor: pointer; transition: all 0.3s ease;"
-                     @onclick="@(() => SelectDay(date))"
-                     role="button"
-                     tabindex="0"
-                     @onkeypress="@((e) => { if (e.Key == "Enter" || e.Key == " ") SelectDay(date); })">
+                style="cursor: pointer; transition: all 0.3s ease;"
+                @onclick="@(() => SelectDay(date))"
+                role="button"
+                tabindex="0"
+                @onkeypress="@((e) => { if (e.Key == "Enter" || e.Key == " ") SelectDay(date); })">
 
                     <div class="card-header text-center position-relative">
                         @label
@@ -198,7 +199,8 @@
     private string NewTodoTitle = string.Empty;
     private string NewTodoDescription = string.Empty;
 
-    [Inject] DummyRepository DummyRepository { get; set; } = default!;
+    [Inject] IRepository<UserProfile> UserProfileRepository { get; set; } = default!;
+    //[Inject] IRepository<WeeklyPlan> WeeklyPlanRepository { get; set; } = default!;
     [Inject] UserStateService UserStateService { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
@@ -215,9 +217,9 @@
                 UserStateService.UserProfiles[0].Selected = true;
             }
 
-            _weeklyPlan = DummyRepository.GetWeeklyPlan();
+            //_weeklyPlan = WeeklyPlanRepository.GetWeeklyPlan();
 
-            //await Task.Delay(1000);
+            await Task.Delay(100);
         }
         catch (Exception ex)
         {

@@ -1,9 +1,99 @@
-﻿@inherits LayoutComponentBase
+﻿@using AutoLife.Components.Modules  
+@using AutoLife.Data.Repositories  
+@using AutoLife.Domain.Models  
+@using AutoLife.Lib.Interfaces  
+@using AutoLife.Lib.Services  
+@inherits LayoutComponentBase  
+@rendermode InteractiveServer  
 
-@Body
+<div class="d-flex flex-column align-items-center w-100">  
+   <nav class="navbar w-100 d-flex justify-content-between align-items-center flex-wrap">  
+       <div class="d-flex gap-2 mx-2 w-25 justify-content-start overflow-auto">  
+           
+           @if (_showAddNewUser) {  
+               <EditForm Model="NewUser" OnValidSubmit="SaveNewUser">
+                   <div class="input-group-sm gap-1">
+                        <InputText class="form-control" @bind-Value="NewUser.Name" />
+                        <div class="btn-group-sm">
+                            <button type="reset" class="btn btn-danger d-flex" @onclick="() => _showAddNewUser = false">
+                                <small>Cancel</small>
+                                <i class="bi bi-x" />
+                            </button>
+                            <button type="submit" class="btn btn-success d-flex">
+                                <small>Add</small>
+                                <i class="bi bi-check-lg" />
+                            </button>
+                        </div>
+                   </div>
+               </EditForm>  
+           } 
+           else 
+           {
+                <button class="btn btn-outline-success d-flex justify-content-center align-items-center" @onclick="OpenAddNewUser">
+                    <span class="bg-transparent bi bi-plus"> Add user </span>
+                </button>
+            }
+           @foreach (var profile in UserStateService.UserProfiles) {  
+               <UserAvatar Name="@profile.Name" />  
+           }  
+       </div>  
+       <a class="navbar-brand mx-2 w-25 d-flex justify-content-center bg-transparent" href="#">  
+           @* <img src="/images/AutoLifeLogo.png" width="60" height="60" alt=""> *@  
+           <h1 class="text-white-50">myPlanner</h1>  
+       </a>  
+       <div class="mx-2 w-25 d-flex flex-column align-items-end">  
+           <button class="btn btn-secondary">  
+               <i class="bi bi-gear" />  
+           </button>  
+       </div>  
+   </nav>  
+   <main class="flex-grow-1 overflow-auto">  
+       @Body  
+   </main>  
+   <footer class="fixed-bottom bg-dark">  
+       <nav class="d-flex w-100 justify-content-around align-items-center p-2">  
+           <button class="nav-item btn btn-dark h-100">  
+               <i class="bi bi-calendar2-check display-5"></i>  
+           </button>  
+           <button class="nav-item btn btn-dark h-100">  
+               <i class="bi bi-plus-square-fill display-5"></i>  
+           </button>  
+           <button class="nav-item btn btn-dark h-100">  
+               <i class="bi bi-cash-coin display-5"></i>  
+           </button>  
+       </nav>  
+   </footer>  
+</div>  
 
-<div id="blazor-error-ui">
-    An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
-</div>
+<div id="blazor-error-ui">  
+   An unhandled error has occurred.  
+   <a href="" class="reload">Reload</a>  
+   <a class="dismiss">🗙</a>  
+</div>  
+
+@code {  
+   private bool _showAddNewUser;  
+   [Inject] private UserStateService UserStateService { get; set; } = default!;  
+   [Inject] private IRepository<UserProfile> UserProfileRepository { get; set; } = default!;  
+   private UserProfile NewUser { get; set; } = new UserProfile();  
+
+   protected override async Task OnInitializedAsync() {  
+       var users = await UserProfileRepository.GetAll();  
+       UserStateService.LoadUsers(users);  
+   }  
+
+   private void OpenAddNewUser() {  
+       _showAddNewUser = !_showAddNewUser;  
+       if (_showAddNewUser) {  
+           NewUser = new UserProfile(); // Ensure NewUser is initialized properly  
+       }  
+   }  
+
+   private async Task SaveNewUser() {  
+       if (NewUser != null && !string.IsNullOrEmpty(NewUser.Name)) {  
+           await UserProfileRepository.Create(NewUser);  
+           UserStateService.AddUser(NewUser);  
+           _showAddNewUser = false;  
+       }  
+   }  
+}
