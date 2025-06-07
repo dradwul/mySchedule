@@ -24,46 +24,60 @@
 }
 else
 {
+    if (_isUserModalOpen)
+    {
+        <Modal Title="@ModalUserProfileClicked.Name" Body="GetModalBodyContent()" OnClose="() => _isUserModalOpen = false" OnDelete="() => DeleteUserProfile(ModalUserProfileClicked)" />
+        //lägg in en confirmation på att profil tagits bort
+    }
+
     <div class="d-flex flex-column align-items-center w-100">  
         <nav class="w-100 d-flex justify-content-between align-items-center flex-wrap">  
-            <div class="d-flex gap-2 mx-2 w-25 justify-content-start overflow-hidden align-items-center">  
+            <div class="d-flex gap-2 mx-2 w-25 justify-content-start align-content-center overflow-hidden align-items-center">  
 
-                @if (_showAddNewUser) {  
+                @if (_showAddNewUser) 
+                {
                     <EditForm Model="NewUser" OnValidSubmit="SaveNewUser">
-                        <div class="input-group-sm d-flex flex-column gap-1">
-                            <InputText class="form-control" placeholder="Enter name" @bind-Value="NewUser.Name" />
-                            <div class="btn-group-sm d-flex justify-content-between gap-1">
-                                <button type="reset" class="btn btn-outline-secondary d-flex" @onclick="() => _showAddNewUser = false">
-                                    <small>Cancel</small>
-                                    <i class="bi bi-x" />
-                                </button>
-                                <button type="submit" class="btn btn-success d-flex justify-content-center w-100 gap-1">
-                                    <small>Save</small>
-                                    <i class="bi bi-check" />
-                                </button>
-                            </div>
+                        <div class="input-group d-flex flex-row">
+                            <InputText class="form-control rounded-start" placeholder="Enter name" @bind-Value="NewUser.Name" />
+                            <button type="reset" class="btn btn-outline-secondary" @onclick="() => _showAddNewUser = false">
+                                <i class="bi bi-x" />
+                            </button>
+                            <button type="submit" class="btn btn-success rounded-end">
+                                <i class="bi bi-check" />
+                            </button>
                         </div>
-                    </EditForm>  
+                    </EditForm>
                 } 
                 else 
                 {
-                    <button class="btn btn-success d-flex justify-content-center align-items-center add-user-button" @onclick="OpenAddNewUser">
-                        <b class="bg-transparent bi bi-plus"/>
+                    <button class="btn btn-success d-flex justify-content-center align-items-center add-user-button gap-1" @onclick="OpenAddNewUser">
+                        <b class="bi bi-person-fill-add" />
                     </button>
                 }
-                @foreach (var profile in UserStateService.UserProfiles) {  
-                    <UserAvatar Name="@profile.Name" />  
+                @foreach (var profile in UserStateService.UserProfiles) 
+                {
+                    <UserAvatar Name="@profile.Name" OnUserModalOpen="() => HandleUserModalOpen(profile)" />
                 }  
             </div>
 
-            <a class="navbar-brand mx-2 d-flex justify-content-center bg-transparent" href="#">  
+            <a class="navbar-brand mx-2 d-flex justify-content-center bg-transparent" href="/">  
                 <h1 class="text-white-50 logo-text">myPlanner</h1>  
             </a>  
 
-            <div class="mx-2 w-25 d-flex flex-column align-items-end">  
-                <button class="btn btn-secondary">  
-                    <i class="bi bi-gear" />  
-                </button>  
+            <div class="mx-2 w-25 d-flex justify-content-end gap-1">
+                @if (_expandDotsMenu)
+                {
+                    <button class="btn btn-secondary">
+                        <i class="bi bi-people-fill" />
+                    </button>
+
+                    <button class="btn btn-secondary">
+                        <i class="bi bi-gear" />
+                    </button>
+                }
+                <button class="btn @(_expandDotsMenu ? "btn-secondary" : "btn-outline-secondary")" @onclick="MenuDotsClicked">
+                    <i class="bi bi-three-dots-vertical" />
+                </button>
             </div>  
         </nav> 
 
@@ -71,7 +85,7 @@ else
             @Body  
         </main>
 
-        <footer class="fixed-bottom bg-dark">  
+        @*         <footer class="fixed-bottom bg-dark">  
             <nav class="d-flex w-100 justify-content-around align-items-center p-2">  
                 <button class="nav-item btn btn-dark h-100">  
                     <i class="bi bi-calendar2-check display-5"></i>  
@@ -83,7 +97,7 @@ else
                     <i class="bi bi-cash-coin display-5"></i>  
                 </button>  
             </nav>  
-        </footer>  
+        </footer>   *@
     </div>  
 
     <div id="blazor-error-ui">  
@@ -96,29 +110,128 @@ else
 @code {
     private bool _showAddNewUser;
     private bool _isLoading = true;
+    private bool _expandDotsMenu;
+    private bool _isUserModalOpen = false;
     [Inject] private UserStateService UserStateService { get; set; } = default!;  
     [Inject] private IRepository<UserProfile> UserProfileRepository { get; set; } = default!;  
-    private UserProfile NewUser { get; set; } = new UserProfile();  
+    private UserProfile NewUser { get; set; } = new UserProfile();
+    private UserProfile ModalUserProfileClicked { get; set; } = new UserProfile();
 
     protected override async Task OnInitializedAsync() {  
         var users = await UserProfileRepository.GetAll();  
         UserStateService.LoadUsers(users);
-        await Task.Delay(3000);
+        //await Task.Delay(3000);
         _isLoading = false;
     }  
 
-   private void OpenAddNewUser() {  
-       _showAddNewUser = !_showAddNewUser;  
-       if (_showAddNewUser) {  
-           NewUser = new UserProfile();
-       }  
-   }  
+    private void HandleUserModalOpen(UserProfile selectedProfile)
+    {
+        ModalUserProfileClicked = selectedProfile;
+        _isUserModalOpen = true;
+    }
 
-   private async Task SaveNewUser() {  
-       if (NewUser != null && !string.IsNullOrEmpty(NewUser.Name)) {  
-           await UserProfileRepository.Create(NewUser);  
-           UserStateService.AddUser(NewUser);  
-           _showAddNewUser = false;  
-       }  
-   }  
+    private RenderFragment GetModalBodyContent()
+    {
+        return builder =>
+        {
+            if (ModalUserProfileClicked?.ToDoList != null && ModalUserProfileClicked.ToDoList.Any())
+            {
+                builder.OpenElement(0, "div");
+
+                builder.OpenElement(1, "details");
+                builder.AddAttribute(2, "open");
+                builder.OpenElement(3, "summary");
+                builder.AddContent(4, "Pending todo's");
+                builder.CloseElement();
+
+                builder.OpenElement(5, "ul");
+                builder.AddAttribute(6, "class", "list-unstyled");
+
+                foreach (var todo in ModalUserProfileClicked.ToDoList.Where(todo => !todo.IsCompleted))
+                {
+                    builder.OpenElement(7, "li");
+                    builder.AddAttribute(8, "class", "d-flex align-items-start mb-1");
+
+                    builder.OpenElement(9, "i");
+                    builder.AddAttribute(10, "class", "bi bi-hourglass text-warning me-2");
+                    builder.CloseElement();
+
+                    builder.OpenElement(11, "small");
+                    builder.AddAttribute(12, "class", "text-body");
+                    builder.AddContent(13, todo.Title);
+                    builder.CloseElement();
+
+                    builder.CloseElement();
+                }
+
+                builder.CloseElement();
+                builder.CloseElement();
+
+                builder.OpenElement(14, "details");
+                builder.OpenElement(15, "summary");
+                builder.AddContent(16, "Completed todo's");
+                builder.CloseElement();
+
+                builder.OpenElement(17, "ul");
+                builder.AddAttribute(18, "class", "list-unstyled");
+
+                foreach (var todo in ModalUserProfileClicked.ToDoList.Where(todo => todo.IsCompleted))
+                {
+                    builder.OpenElement(19, "li");
+                    builder.AddAttribute(20, "class", "d-flex align-items-start mb-1");
+
+                    builder.OpenElement(21, "i");
+                    builder.AddAttribute(22, "class", "bi bi-check2-circle text-success me-2");
+                    builder.CloseElement();
+
+                    builder.OpenElement(23, "small");
+                    builder.AddAttribute(24, "class", "text-body");
+                    builder.AddContent(25, todo.Title);
+                    builder.CloseElement();
+
+                    builder.CloseElement();
+                }
+
+                builder.CloseElement();
+                builder.CloseElement();
+
+                builder.CloseElement();
+            }
+            else
+            {
+                builder.OpenElement(26, "p");
+                builder.AddContent(27, "No tasks available for this user.");
+                builder.CloseElement();
+            }
+        };
+    }
+
+
+    private void DeleteUserProfile(UserProfile userToDelete)
+    {
+        UserProfileRepository.Remove(userToDelete);
+        UserStateService.RemoveUser(userToDelete);
+        _isUserModalOpen = false;
+        StateHasChanged();
+    }
+
+    private void OpenAddNewUser() {  
+        _showAddNewUser = !_showAddNewUser;  
+        if (_showAddNewUser) {  
+            NewUser = new UserProfile();
+        }  
+    }
+
+    private async Task SaveNewUser() {  
+        if (NewUser != null && !string.IsNullOrEmpty(NewUser.Name)) {  
+            await UserProfileRepository.Create(NewUser);  
+            UserStateService.AddUser(NewUser);  
+            _showAddNewUser = false;  
+        }  
+    }
+
+    private void MenuDotsClicked()
+    {
+        _expandDotsMenu = !_expandDotsMenu;
+    }
 }

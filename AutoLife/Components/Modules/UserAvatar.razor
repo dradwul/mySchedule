@@ -1,30 +1,37 @@
-<button class="avatar-button btn btn-outline-secondary d-flex justify-content-center align-items-center">
-    <b class="bg-transparent">@GetInitials()</b>
+<button class="btn btn-outline-secondary d-flex justify-content-center align-items-center gap-2"
+        @onmouseover="() => _isHovered = true" @onmouseout="() => _isHovered = false"
+        @onclick="OpenUserModal">
+    @if (_isHovered)
+    {
+        <span class="bg-transparent">@Name</span>
+        <i class="bi bi-gear small" />
+    }
+    else
+    {
+        <b class="bg-transparent">@GetInitials()</b>
+    }
 </button>
 
-<style>
-.avatar-button:hover b {
-    display:none;
-}
-.avatar-button:hover::after {
-    content:"@Name";
-    font-weight:bold;
-}
-</style>
-
 @code {
+    private bool _isHovered = false;
+
     [Parameter]
     public string? Name { get; set; }
+    [Parameter]
+    public EventCallback OnUserModalOpen { get; set; }
+
+    private void OpenUserModal()
+    {
+        if (OnUserModalOpen.HasDelegate)
+        {
+            OnUserModalOpen.InvokeAsync();
+        }
+    }
+
     private string GetInitials()
     {
         if (string.IsNullOrEmpty(Name))
             return "??";
-        var names = Name.Split(' ');
-        if (names.Length == 0)
-            return "??";
-        var firstInitial = names[0].Substring(0, 1).ToUpper();
-        var lastInitial = names.Length > 1 ? names[names.Length - 1].Substring(0, 1).ToUpper() : string.Empty;
-        //return $"{firstInitial}{lastInitial}";
-        return $"{firstInitial}";
+        return $"{Name[0].ToString().ToUpper()}";
     }
 }

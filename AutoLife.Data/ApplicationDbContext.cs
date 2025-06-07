@@ -10,4 +10,5 @@ public class ApplicationDbContext : DbContext
 
 	public DbSet<ToDoItem> ToDoItems { get; set; }
 	public DbSet<UserProfile> UserProfiles { get; set; }
+	public DbSet<UserAccount> UserAccounts { get; set; }
 }

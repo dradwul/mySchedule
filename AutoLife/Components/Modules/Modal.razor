@@ -1,0 +1,62 @@
+﻿<div class="modal" tabindex="-1" style="display: block;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@Title</h5>
+                <button type="button" class="btn-close" @onclick="CloseModal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                @Body
+            </div>
+            <div class="modal-footer d-flex justify-content-start gap-2">
+                @if (_showDeleteConfirmation)
+                {
+                    <span> Are you sure you want to delete this profile?? </span>
+                    <button type="button" class="btn btn-danger d-flex gap-2" @onclick="async () => await OnDelete.InvokeAsync()">
+                        Yes, delete profile
+                        <i class="bi bi-trash" />
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary" @onclick="OnDeleteCancelClicked">
+                        No, cancel
+                    </button>
+                }
+                else
+                {
+                    <button type="button" class="btn btn-danger d-flex gap-2" @onclick="OnDeleteClicked">
+                        Delete user profile
+                        <i class="bi bi-trash" />
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private bool _isModalOpen;
+    private bool _showDeleteConfirmation;
+
+    [Parameter]  
+    public string Title { get; set; } = "Title";  
+
+    [Parameter]  
+    public RenderFragment? Body { get; set; }  
+
+    [Parameter]  
+    public EventCallback OnDelete { get; set; }  
+
+    [Parameter]  
+    public EventCallback OnClose { get; set; }  
+
+    public void OpenModal() => _isModalOpen = true;  
+    public void CloseModal() => OnClose.InvokeAsync();
+
+    private void OnDeleteClicked()
+    {
+        _showDeleteConfirmation = true;
+    }
+
+    private void OnDeleteCancelClicked(){
+        _showDeleteConfirmation = false;
+    }
+}

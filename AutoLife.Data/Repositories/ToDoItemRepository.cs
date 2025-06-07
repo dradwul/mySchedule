@@ -68,6 +68,8 @@ public class ToDoItemRepository : IRepository<ToDoItem>
 	public async Task<List<ToDoItem>> GetAll()
 	{
 		var context = _context.CreateDbContext();
-		return await context.ToDoItems.ToListAsync();
+		return await context.ToDoItems
+			.Include(todo => todo.AssignedPerson)
+			.ToListAsync();
 	}
 }

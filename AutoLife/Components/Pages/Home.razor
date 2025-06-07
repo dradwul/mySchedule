@@ -18,10 +18,10 @@
 
         <div class="d-flex align-items-center h-100 w-100 justify-content-between">
             <button class="btn d-flex justify-content-center text-white-50"
-                    style="width:50px; min-width:50px;"
-                    @onclick="() => ChangeDay(-1)"
-                    aria-label="Previous day"
-                    title="Previous day">
+            style="width:50px; min-width:50px;"
+            @onclick="() => ChangeDay(-1)"
+            aria-label="Previous day"
+            title="Previous day">
                 <i class="bi bi-chevron-left" />
             </button>
 
@@ -34,11 +34,11 @@
                     var totalCount = todosForDay.Count;
 
                     <div class="card @(profile.Selected ? "border-primary flex-grow-1 selected" : "opacity-75")"
-                         @onclick="@(() => SelectProfile(profile))"
-                         style="cursor:pointer; transition: all 0.3s ease;"
-                         role="button"
-                         tabindex="0"
-                         @onkeypress="@((e) => { if (e.Key == "Enter" || e.Key == " ") SelectProfile(profile); })">
+                    @onclick="@(() => SelectProfile(profile))"
+                    style="cursor:pointer; transition: all 0.3s ease;"
+                    role="button"
+                    tabindex="0"
+                    @onkeypress="@((e) => { if (e.Key == "Enter" || e.Key == " ") SelectProfile(profile); })">
 
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <span class="profile-name">
@@ -70,12 +70,12 @@
                                         var todo = todosForDay[j];
                                         var inputId = $"user{i}td{j}";
 
-                                        <div class="input-group gap-2 mb-2">
+                                        <div class="input-group d-flex align-items-center gap-2 mb-2">
                                             <div class="form-check d-flex align-items-center">
                                                 <InputCheckbox id="@inputId" class="form-check-input"
-                                                               @bind-Value="todo.IsCompleted" @onclick="@(() => OnTodoToggled(todo))" />
+                                                @bind-Value="todo.IsCompleted" @onclick="@(() => OnTodoToggled(todo))" />
                                                 <label class="form-check-label ms-2 @(todo.IsCompleted ? "text-decoration-line-through text-muted" : "")"
-                                                       for="@inputId">
+                                                for="@inputId">
                                                     @todo.Title
                                                 </label>
                                             </div>
@@ -94,14 +94,23 @@
                                     </div>
                                 }
 
-                                <button class="mt-4 btn btn-primary btn-success" @onclick="NewTodoClicked"> + Add todo </button>
                                 @if (AddNewTodoClicked)
                                 {
                                     <div class="mt-3">
                                         <InputText @bind-Value="NewTodoTitle" placeholder="New todo..." class="form-control" />
                                         <InputTextArea @bind-Value="NewTodoDescription" placeholder="Description (optional)" class="form-control mt-2" />
-                                        <button class="btn btn-success mt-2" @onclick="AddNewTodo">Add</button>
+                                        <button class="btn btn-secondary mt-2" @onclick="() => AddNewTodoClicked = false">
+                                            Cancel
+                                        </button>
+                                        <button class="btn btn-success mt-2" @onclick="AddNewTodo">
+                                            Save
+                                            <i class="bi bi-floppy"></i>
+                                        </button>
                                     </div>
+                                }
+                                else
+                                {
+                                    <button class="mt-4 btn btn-primary btn-success" @onclick="NewTodoClicked"> + Add todo </button>
                                 }
 
                             </div>
@@ -111,75 +120,83 @@
             </div>
 
             <button class="btn d-flex justify-content-center text-white-50 hover-scale"
-                    style="width:50px; min-width:50px;"
-                    @onclick="() => ChangeDay(1)"
-                    aria-label="Next day"
-                    title="Next day">
+            style="width:50px; min-width:50px;"
+            @onclick="() => ChangeDay(1)"
+            aria-label="Next day"
+            title="Next day">
                 <i class="bi bi-chevron-right" />
             </button>
         </div>
     </main>
 
-    <div class="fixed-bottom d-flex justify-content-center p-2 gap-1 bg-dark" style="bottom:82px; height:15%;">
-        @for (int i = 0; i < 7; i++)
+    <div class="fixed-bottom d-flex align-items-end justify-content-center">
+        @if (ToDoItemService.WeeklyPlan != null)
         {
-            var date = startOfWeek.AddDays(i);
-            var isSelected = date.Day == _selectedDay.Day && date.Month == _selectedDay.Month;
-            var isToday = date.Date == DateTime.Today;
-            var label = isSelected ? date.ToString("dddd", new CultureInfo("sv-SE")) :
-            date.ToString("ddd", new CultureInfo("sv-SE")).Substring(0, 1).ToUpper();
-            var dayItems = _weeklyPlan.Where(item => item.Date.Date == date.Date).OrderBy(item => item.Date).ToList();
-
-            <div class="card day-card @(isSelected ? "flex-grow-1 selected" : "opacity-50") @(isToday ? "border-warning" : "")"
-                 style="cursor: pointer; transition: all 0.3s ease;"
-                 @onclick="@(() => SelectDay(date))"
-                 role="button"
-                 tabindex="0"
-                 @onkeypress="@((e) => { if (e.Key == "Enter" || e.Key == " ") SelectDay(date); })">
-
-                <div class="card-header text-center position-relative">
-                    @label
-                    @if (isToday)
+            <div class="d-flex flex-column w-100">
+                <h5 class="text-white-50 mx-2 opacity-25"> This week </h5>
+                <div class="d-flex justif gap-1">
+                    @for (int i = 0; i < 7; i++)
                     {
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
-                            <span class="visually-hidden">Idag</span>
-                        </span>
-                    }
-                </div>
+                        var date = startOfWeek.AddDays(i);
+                        var isSelected = date.Day == _selectedDay.Day && date.Month == _selectedDay.Month;
+                        var isToday = date.Date == DateTime.Today;
+                        var label = isSelected ? date.ToString("dddd") : date.ToString("ddd").Substring(0, 1).ToUpper();
+                        var dayItems = ToDoItemService.WeeklyPlan.Where(item => item.Date.Date == date.Date).OrderBy(item => item.Date).ToList();
 
-                <div class="card-body overflow-hidden p-2">
-                    @if (dayItems.Any())
-                    {
-                        @foreach (var item in dayItems.Take(3))
-                        {
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <span class="text-truncate @(item.IsCompleted ? " text-decoration-line-through text-muted small" : "")" title="@item.Title">@item.Title</span>
-                                <small class=" @(item.IsCompleted ? " text-decoration-line-through text-muted small" : "")">@item.Date.ToString("HH:mm")</small>
+                        <div class="card @(isSelected ? "flex-grow-1 selected" : "opacity-50") @(isToday ? "border-warning" : "")"
+                        style="cursor: pointer; transition: all 0.3s ease;"
+                        @onclick="@(() => SelectDay(date))"
+                        role="button"
+                        tabindex="0"
+                        @onkeypress="@((e) => { if (e.Key == "Enter" || e.Key == " ") SelectDay(date); })">
+
+                            <div class="card-header text-center position-relative">
+                                @label
+                                @if (isToday)
+                                {
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
+                                        <span class="visually-hidden">Today</span>
+                                    </span>
+                                }
                             </div>
-                        }
-                        @if (dayItems.Count > 3)
-                        {
-                            <small class="text-muted">+@(dayItems.Count - 3) to...</small>
-                        }
-                    }
-                    else
-                    {
-                        <div class="text-center text-muted">
-                            <small>No activities</small>
+
+                            <div class="card-body overflow-hidden p-2">
+                                @if (dayItems.Any())
+                                {
+                                    @foreach (var item in dayItems.Take(3))
+                                    {
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <span class="text-truncate @(item.IsCompleted ? " text-decoration-line-through text-muted small" : "")" title="@item.Title">@item.Title (@item.AssignedPerson.Name)</span>
+                                            <small class=" @(item.IsCompleted ? " text-decoration-line-through text-muted small" : "")">@item.Date.ToString("HH:mm")</small>
+                                        </div>
+                                    }
+                                    @if (dayItems.Count > 3)
+                                    {
+                                        <small class="text-muted">+@(dayItems.Count - 3) to...</small>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="text-center text-muted">
+                                        <small>No activities</small>
+                                    </div>
+                                }
+                            </div>
                         </div>
                     }
                 </div>
             </div>
         }
+        else
+        {
+            <h4 class="w-100 h-100 d-flex justify-content-center align-items-center text-white-50 opacity-50">Loading weekly plan...</h4>
+        }
     </div>
-    }
 </div>
 
 @code {
-    //private bool _isLoading = true;
     private DateTime _selectedDay = DateTime.UtcNow;
 
-    private List<ToDoItem> _weeklyPlan = new();
     DateTime now = DateTime.UtcNow;
     DateTime startOfWeek => now.Date.AddDays(-(now.DayOfWeek == DayOfWeek.Sunday ? 6 : now.DayOfWeek - DayOfWeek.Monday));
     DateTime endOfWeek => startOfWeek.AddDays(6).AddHours(23).AddMinutes(59).AddSeconds(59);
@@ -189,7 +206,7 @@
     private string NewTodoDescription = string.Empty;
 
     [Inject] IRepository<UserProfile> UserProfileRepository { get; set; } = default!;
-    [Inject] IRepository<ToDoItem> ToDoItemRepository { get; set; } = default!;
+    [Inject] ToDoItemService ToDoItemService { get; set; } = default!;
     [Inject] UserStateService UserStateService { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
@@ -199,10 +216,8 @@
             UserStateService.UserProfiles[0].Selected = true;
         }
 
-        _weeklyPlan = await ToDoItemRepository.GetAll(); // ändra detta till att hämta från typ lista av users
-
-        //await Task.Delay(3000);
-        //_isLoading = true;
+        await ToDoItemService.LoadAllTodosAsync();
+        await Task.Delay(3000);
         StateHasChanged();
     }
 
@@ -234,8 +249,8 @@
     private async Task OnTodoToggled(ToDoItem todo)
     {
         todo.IsCompleted = !todo.IsCompleted;
-        await ToDoItemRepository.Update(todo);
-        var updatedItem = _weeklyPlan.FirstOrDefault(item => item.Id == todo.Id);
+        await ToDoItemService.UpdateTodoItemAync(todo);
+        var updatedItem = ToDoItemService.WeeklyPlan.FirstOrDefault(item => item.Id == todo.Id);
         if (updatedItem != null)
         {
             updatedItem.IsCompleted = todo.IsCompleted;
@@ -274,8 +289,8 @@
                 IsCompleted = false
             };
 
-        await ToDoItemRepository.Create(newTodo);
-        //selectedProfile?.ToDoList.Add(newTodo);
+        await ToDoItemService.CreateNewTodoAsync(newTodo);
+        UserStateService.AddTodoToUser(selectedProfile, newTodo);
         NewTodoTitle = string.Empty;
         NewTodoDescription = string.Empty;
         AddNewTodoClicked = false;

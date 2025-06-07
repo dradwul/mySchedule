@@ -22,4 +22,10 @@ public class UserStateService
     {
         _userProfiles.Remove(user);
     }
+
+    public void AddTodoToUser(UserProfile user, ToDoItem todoItem)
+    {
+        var userToUpdate = _userProfiles.FirstOrDefault(u => u.Id == user.Id);
+        userToUpdate?.ToDoList.Add(todoItem);
+    }
 }

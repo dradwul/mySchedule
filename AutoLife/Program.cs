@@ -13,6 +13,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddSingleton<UserStateService>();
+builder.Services.AddScoped<ToDoItemService>();
 builder.Services.AddScoped<IRepository<UserProfile>, UserProfileRepository>();
 builder.Services.AddScoped<IRepository<ToDoItem>, ToDoItemRepository>();
 
